@@ -17,7 +17,19 @@ type Experience = {
 export function Experience() {
   // Experience
   const experiences: Experience[] = [
-    // No professional experience yet - focusing on academic and research projects
+    {
+      company: 'Luxury In Taste (LIT)',
+      title: 'Cloud-AI / Internship',
+      location: 'Hosur, TN, India',
+      period: '28th May 2025 – 28th July 2025',
+      description: 'Develop and implement cloud-based solutions using Microsoft Azure. Collaborate with developers to integrate new features using Python and React.js. Optimize cloud workflows and contribute to AI-driven projects.',
+      achievements: [
+        'Developed and implemented cloud-based solutions using Microsoft Azure.',
+        'Collaborated with developers to integrate new features using Python and React.js.',
+        'Optimized cloud workflows and contributed to AI-driven projects.'
+      ],
+      technologies: ['Microsoft Azure', 'Python', 'React.js', 'Cloud', 'AI']
+    }
   ]
 
   // Education
