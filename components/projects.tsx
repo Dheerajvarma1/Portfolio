@@ -27,8 +27,7 @@ const filters = [
   { id: 'computer-vision', name: 'Computer Vision' },
   { id: 'nlp-rag', name: 'NLP/RAG' },
   { id: 'web', name: 'Web Development' },
-  { id: 'mobile', name: 'Mobile' },
-  { id: 'research', name: 'Research' }
+  { id: 'mobile', name: 'Mobile' }
 ]
 
 const projects = [
@@ -137,23 +136,6 @@ const projects = [
     technologies: ["Mobile Development", "AI Integration", "Camera API", "Offline ML", "User Experience"],
     category: "mobile",
     icon: Smartphone,
-    github: "https://github.com/Dheerajvarma1/PaddyDoctorAPP",
-    demo: "https://www.youtube.com/watch?v=oF2EVdqZTg4"
-  },
-
-  // Research Projects
-  {
-    title: "PaddyDoctorAPP (Research)",
-    description: "Research-focused development of novel deep learning architectures for agricultural disease detection, exploring various CNN models and optimization techniques for enhanced accuracy.",
-    features: [
-      "Novel CNN architecture research",
-      "Comparative model analysis",
-      "Dataset creation and curation",
-      "Performance optimization studies"
-    ],
-    technologies: ["Deep Learning Research", "CNN Architectures", "Model Optimization", "Agricultural AI", "Research Methodology"],
-    category: "research",
-    icon: Lightbulb,
     github: "https://github.com/Dheerajvarma1/PaddyDoctorAPP",
     demo: "https://www.youtube.com/watch?v=oF2EVdqZTg4"
   }
