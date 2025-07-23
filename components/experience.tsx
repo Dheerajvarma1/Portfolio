@@ -3,9 +3,20 @@
 import { motion } from 'framer-motion'
 import { Calendar, MapPin, Building, Award } from 'lucide-react'
 
+type Experience = {
+  company: string;
+  title: string;
+  location: string;
+  period: string;
+  description: string;
+  achievements: string[];
+  technologies: string[];
+  // Add other fields as needed
+};
+
 export function Experience() {
   // Experience
-  const experiences = [
+  const experiences: Experience[] = [
     // No professional experience yet - focusing on academic and research projects
   ]
 
