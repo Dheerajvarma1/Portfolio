@@ -96,13 +96,8 @@ export function Hero() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6"
           >
-            <span className="gradient-text">AI/ML Specialist</span>
-            <br />
-            <span className="text-gray-800 dark:text-gray-200">
-              Transforming Ideas into
-            </span>
-            <br />
-            <span className="gradient-text">Intelligent Solutions</span>
+            <span className="gradient-text">Dheeraj Varma AI/ML Specialist.</span>
+            <span className="block gradient-text">Transforming Ideas into Intelligent Solutions</span>
           </motion.h1>
 
           {/* Subtitle */}

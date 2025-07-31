@@ -4,13 +4,16 @@ import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Menu, X, Sun, Moon, Brain } from 'lucide-react'
 import { useTheme } from 'next-themes'
+import Link from 'next/link';
 
 const navItems = [
-  { name: 'Home', href: '#home' },
+  { name: 'Home', href: '/' },
   { name: 'About', href: '#about' },
   { name: 'Skills', href: '#skills' },
-  { name: 'Experience', href: '#experience' },
-  { name: 'Projects', href: '#projects' },
+  { name: 'Experience', href: '/experience' },
+  { name: 'Projects', href: '/projects' },
+  { name: 'Education', href: '/education' },
+  { name: 'Certifications', href: '/certifications' },
   { name: 'Contact', href: '#contact' },
 ]
 
@@ -61,15 +64,27 @@ export function Navigation() {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
-              <motion.button
-                key={item.name}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => scrollToSection(item.href)}
-                className="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200 font-medium"
-              >
-                {item.name}
-              </motion.button>
+              item.href.startsWith('/') ? (
+                <Link key={item.name} href={item.href} legacyBehavior>
+                  <motion.a
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200 font-medium cursor-pointer"
+                  >
+                    {item.name}
+                  </motion.a>
+                </Link>
+              ) : (
+                <motion.button
+                  key={item.name}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => scrollToSection(item.href)}
+                  className="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200 font-medium"
+                >
+                  {item.name}
+                </motion.button>
+              )
             ))}
             {/* Theme Toggle */}
             {mounted && (
@@ -107,43 +122,31 @@ export function Navigation() {
         </div>
 
         {/* Mobile Navigation */}
-        {isOpen && mounted && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="md:hidden"
-          >
-            <div className="px-2 pt-2 pb-3 space-y-1 bg-white/95 dark:bg-dark-900/95 backdrop-blur-md rounded-lg mt-2 border border-gray-200/20">
+        {isOpen && (
+          <div className="md:hidden fixed inset-0 z-40 bg-black/40" onClick={() => setIsOpen(false)}>
+            <div className="absolute top-16 right-0 w-64 bg-white dark:bg-dark-900 shadow-lg rounded-l-xl p-6 flex flex-col space-y-6" onClick={e => e.stopPropagation()}>
               {navItems.map((item) => (
-                <button
-                  key={item.name}
-                  onClick={() => scrollToSection(item.href)}
-                  className="block w-full text-left px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-100 dark:hover:bg-dark-800 rounded-md transition-colors duration-200"
-                >
-                  {item.name}
-                </button>
+                item.href.startsWith('/') ? (
+                  <Link key={item.name} href={item.href} legacyBehavior>
+                    <a
+                      className="text-lg font-medium text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200 cursor-pointer"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      {item.name}
+                    </a>
+                  </Link>
+                ) : (
+                  <button
+                    key={item.name}
+                    onClick={() => { scrollToSection(item.href); setIsOpen(false); }}
+                    className="text-lg font-medium text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200 text-left"
+                  >
+                    {item.name}
+                  </button>
+                )
               ))}
-              <div className="px-3 py-2">
-                <button
-                  onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                  className="flex items-center space-x-2 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200"
-                >
-                  {theme === 'dark' ? (
-                    <>
-                      <Sun className="h-5 w-5" />
-                      <span>Light Mode</span>
-                    </>
-                  ) : (
-                    <>
-                      <Moon className="h-5 w-5" />
-                      <span>Dark Mode</span>
-                    </>
-                  )}
-                </button>
-              </div>
             </div>
-          </motion.div>
+          </div>
         )}
       </div>
     </motion.nav>

@@ -43,22 +43,6 @@ export function Experience() {
     }
   ]
 
-  // Research Projects
-  const research = [
-    {
-      title: 'Paddy Disease Detection with Computer Vision',
-      advisor: 'Dr. Pavan Kumar C',
-      period: 'Jan 2025 – Apr 2025',
-      description: 'Developed and optimized a high-accuracy paddy disease detection model using TensorFlow with the Xception architecture, incorporating parallel processing techniques to enhance model training efficiency. Leveraged GPU acceleration on AWS EC2 HPC instances to execute distributed inference tasks, simulating a multinode environment to handle large-scale image data processing.'
-    },
-    {
-      title: 'AI/NLP System for Educational Content Generation',
-      advisor: 'Dr. Krishnendu Ghosh',
-      period: 'Jan 2025 – Feb 2025',
-      description: 'Developed an AI/NLP system using transformer models (via the Ollama API) to automatically generate structured lecture guides, with a scalable architecture designed for future distributed processing. Enhanced instructor productivity by refining content using NLP libraries (TextBlob, NLTK) in a modular framework, setting the stage for parallel processing on HPC environments.'
-    }
-  ]
-
   // Certifications & Awards
   const certifications = [
     { name: 'Internshala: Natural Language Processing', year: 'Jan 2025 - Present' },
@@ -209,38 +193,6 @@ export function Experience() {
                 </p>
                 <p className="text-sm text-gray-500 dark:text-gray-300">
                   {edu.period}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-
-        {/* Research Projects */}
-        <div className="mb-20">
-          <h3 className="text-3xl font-bold mb-8 text-gray-800 dark:text-gray-200 text-center">
-            Research Projects
-          </h3>
-          <div className="space-y-6 max-w-2xl mx-auto">
-            {research.map((proj, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, x: 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.2 }}
-                viewport={{ once: true }}
-                className="bg-white dark:bg-dark-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300"
-              >
-                <div className="flex justify-between items-start mb-3">
-                  <h4 className="text-xl font-bold text-gray-800 dark:text-gray-200">
-                    {proj.title}
-                  </h4>
-                  <span className="text-primary-600 dark:text-primary-300 font-medium">{proj.period}</span>
-                </div>
-                <p className="text-gray-700 dark:text-gray-300 mb-2">
-                  <span className="font-medium">Advisor:</span> {proj.advisor}
-                </p>
-                <p className="text-gray-600 dark:text-gray-400">
-                  {proj.description}
                 </p>
               </motion.div>
             ))}
