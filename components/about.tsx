@@ -141,25 +141,25 @@ export function About() {
             viewport={{ once: true }}
             className="relative"
           >
-            <div className="relative bg-gradient-to-br from-primary-500 to-neural-500 rounded-2xl p-8 text-white">
-              <div className="absolute inset-0 bg-black/20 rounded-2xl"></div>
+            <div className="relative bg-white dark:bg-gradient-to-br dark:from-primary-500 dark:to-neural-500 rounded-2xl p-8 text-gray-800 dark:text-white border border-gray-200 dark:border-transparent">
+              <div className="absolute inset-0 bg-transparent dark:bg-black/20 rounded-2xl"></div>
               <div className="relative z-10">
                 <h4 className="text-2xl font-bold mb-4">Core Philosophy</h4>
                 <ul className="space-y-3">
                   <li className="flex items-start space-x-3">
-                    <div className="w-2 h-2 bg-white rounded-full mt-2 flex-shrink-0"></div>
+                    <div className="w-2 h-2 bg-gray-800 dark:bg-white rounded-full mt-2 flex-shrink-0"></div>
                     <span>Innovation through intelligent automation</span>
                   </li>
                   <li className="flex items-start space-x-3">
-                    <div className="w-2 h-2 bg-white rounded-full mt-2 flex-shrink-0"></div>
+                    <div className="w-2 h-2 bg-gray-800 dark:bg-white rounded-full mt-2 flex-shrink-0"></div>
                     <span>Data-driven decision making</span>
                   </li>
                   <li className="flex items-start space-x-3">
-                    <div className="w-2 h-2 bg-white rounded-full mt-2 flex-shrink-0"></div>
+                    <div className="w-2 h-2 bg-gray-800 dark:bg-white rounded-full mt-2 flex-shrink-0"></div>
                     <span>Scalable and maintainable solutions</span>
                   </li>
                   <li className="flex items-start space-x-3">
-                    <div className="w-2 h-2 bg-white rounded-full mt-2 flex-shrink-0"></div>
+                    <div className="w-2 h-2 bg-gray-800 dark:bg-white rounded-full mt-2 flex-shrink-0"></div>
                     <span>Continuous learning and improvement</span>
                   </li>
                 </ul>

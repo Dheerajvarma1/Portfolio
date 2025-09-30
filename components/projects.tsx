@@ -21,6 +21,7 @@ import {
   Github,
   ExternalLink
 } from 'lucide-react'
+import { usePathname, useRouter } from 'next/navigation';
 
 const filters = [
   { id: 'all', name: 'All Projects' },
@@ -144,6 +145,8 @@ const projects = [
 export function Projects() {
   const [activeFilter, setActiveFilter] = useState('all')
   const [filteredProjects, setFilteredProjects] = useState(projects)
+  const pathname = usePathname();
+  const router = useRouter();
 
   useEffect(() => {
     if (activeFilter === 'all') {
@@ -341,7 +344,18 @@ export function Projects() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="btn-primary text-lg px-8 py-4"
-            onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
+            onClick={() => {
+              if (pathname !== '/') {
+                router.push('/');
+                setTimeout(() => {
+                  const el = document.querySelector('#contact');
+                  if (el) el.scrollIntoView({ behavior: 'smooth' });
+                }, 500);
+              } else {
+                const el = document.querySelector('#contact');
+                if (el) el.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
           >
             Start a Conversation
           </motion.button>

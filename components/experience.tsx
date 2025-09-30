@@ -2,6 +2,9 @@
 
 import { motion } from 'framer-motion'
 import { Calendar, MapPin, Building, Award } from 'lucide-react'
+import DarkVeil from './DarkVeil';
+import { usePathname, useRouter } from 'next/navigation';
+import AnimatedWavesBackground from './AnimatedWavesBackground';
 
 type Experience = {
   company: string;
@@ -15,6 +18,8 @@ type Experience = {
 };
 
 export function Experience() {
+  const pathname = usePathname();
+  const router = useRouter();
   // Experience
   const experiences: Experience[] = [
     {
@@ -54,8 +59,16 @@ export function Experience() {
   ]
 
   return (
-    <section id="experience" className="py-20 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
+    <section id="experience" className="relative py-20 px-4 sm:px-6 lg:px-8">
+      {/* Subtle Dot Grid Background */}
+      <div
+        className="absolute inset-0 -z-10"
+        style={{
+          backgroundImage: "radial-gradient(rgba(59,130,246,0.08) 1.5px, transparent 1.5px)",
+          backgroundSize: "32px 32px"
+        }}
+      />
+      <div className="relative z-10 max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -200,35 +213,43 @@ export function Experience() {
         </div>
 
         {/* Certifications & Awards */}
-        <div className="mb-8">
-          <h3 className="text-3xl font-bold mb-8 text-gray-800 dark:text-gray-200 text-center">
-            Awards & Certifications
+        {/* Removed as per user request */}
+
+        {/* Call to Action */}
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-center mt-16"
+        >
+          <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-200 mb-4">
+            Ready to Build Something Amazing?
           </h3>
-          <div className="space-y-4 max-w-2xl mx-auto">
-            {certifications.map((cert, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, x: 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="flex items-center space-x-4 bg-white dark:bg-dark-800 rounded-xl p-4 shadow-lg hover:shadow-xl transition-all duration-300"
-              >
-                <div className="p-2 bg-primary-100 dark:bg-primary-900/30 rounded-lg">
-                  <Award className="w-6 h-6 text-primary-600" />
-                </div>
-                <div className="flex-1">
-                  <h4 className="font-semibold text-gray-800 dark:text-gray-200">
-                    {cert.name}
-                  </h4>
-                  <p className="text-sm text-gray-600 dark:text-gray-300">
-                    {cert.year}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
+          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-8">
+            Let's collaborate on your next innovative project. I'm always excited to work on 
+            challenging problems that push the boundaries of technology.
+          </p>
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="btn-primary text-lg px-8 py-4"
+            onClick={() => {
+              if (pathname !== '/') {
+                router.push('/');
+                setTimeout(() => {
+                  const el = document.querySelector('#contact');
+                  if (el) el.scrollIntoView({ behavior: 'smooth' });
+                }, 500);
+              } else {
+                const el = document.querySelector('#contact');
+                if (el) el.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
+          >
+            Start a Conversation
+          </motion.button>
+        </motion.div>
       </div>
     </section>
   )

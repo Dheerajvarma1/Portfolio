@@ -5,14 +5,14 @@ import { motion } from 'framer-motion'
 import { Menu, X, Sun, Moon, Brain } from 'lucide-react'
 import { useTheme } from 'next-themes'
 import Link from 'next/link';
+import { usePathname, useRouter } from 'next/navigation';
 
 const navItems = [
   { name: 'Home', href: '/' },
   { name: 'About', href: '#about' },
   { name: 'Skills', href: '#skills' },
-  { name: 'Experience', href: '/experience' },
+  { name: 'Experience & Education', href: '/experience' },
   { name: 'Projects', href: '/projects' },
-  { name: 'Education', href: '/education' },
   { name: 'Certifications', href: '/certifications' },
   { name: 'Contact', href: '#contact' },
 ]
@@ -22,6 +22,8 @@ export function Navigation() {
   const [scrolled, setScrolled] = useState(false)
   const { theme, setTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
+  const pathname = usePathname();
+  const router = useRouter();
 
   useEffect(() => {
     setMounted(true)
@@ -33,11 +35,21 @@ export function Navigation() {
   }, [])
 
   const scrollToSection = (href: string) => {
-    const element = document.querySelector(href)
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
+    if (pathname !== '/') {
+      router.push('/');
+      setTimeout(() => {
+        const element = document.querySelector(href);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 500);
+    } else {
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
     }
-    setIsOpen(false)
+    setIsOpen(false);
   }
 
   return (
@@ -145,6 +157,27 @@ export function Navigation() {
                   </button>
                 )
               ))}
+              {/* Mobile Theme Toggle */}
+              {mounted && (
+                <div className="pt-4 border-t border-gray-200 dark:border-dark-700">
+                  <button
+                    onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                    className="flex items-center space-x-3 text-lg font-medium text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200"
+                  >
+                    {theme === 'dark' ? (
+                      <>
+                        <Sun className="h-5 w-5 text-yellow-500" />
+                        <span>Light Mode</span>
+                      </>
+                    ) : (
+                      <>
+                        <Moon className="h-5 w-5 text-gray-700" />
+                        <span>Dark Mode</span>
+                      </>
+                    )}
+                  </button>
+                </div>
+              )}
             </div>
           </div>
         )}
