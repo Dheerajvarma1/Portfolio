@@ -77,6 +77,20 @@ const projects = [
     icon: Bot,
     github: "https://github.com/Dheerajvarma1/GameCV"
   },
+  {
+    title: "Edge Detection App with OpenGL ES 2.0",
+    description: "A professional-grade real-time edge detection Android application featuring hardware-accelerated OpenGL ES 2.0 rendering with OpenCV C++ native processing.",
+    features: [
+      "Hardware-accelerated OpenGL ES 2.0 rendering",
+      "Real-time edge detection with Canny algorithm",
+      "Custom vertex & fragment shaders",
+      "Native C++ OpenCV processing with JNI"
+    ],
+    technologies: ["Android", "OpenGL ES 2.0", "OpenCV", "C++", "JNI", "Computer Vision"],
+    category: "computer-vision",
+    icon: Eye,
+    github: "https://github.com/Dheerajvarma1/android-opencv-opengl-assignment"
+  },
 
   // NLP/RAG Projects
   {
@@ -123,6 +137,21 @@ const projects = [
     category: "web",
     icon: Globe
   },
+  {
+    title: "Edge Detection Website",
+    description: "Interactive web showcase featuring multiple edge detection examples with different parameters and real-time FPS metrics. Displays processed camera frames from the Android OpenCV OpenGL assignment.",
+    features: [
+      "Image display with canvas rendering",
+      "Real-time statistics (FPS, resolution, processing time)",
+      "Interactive UI with toggle controls",
+      "TypeScript with full type safety"
+    ],
+    technologies: ["TypeScript", "Vite", "HTML5", "Canvas API", "CSS3"],
+    category: "web",
+    icon: Eye,
+    github: "https://github.com/Dheerajvarma1/EDGE-DETECTION-website",
+    demo: "https://edge-detection-website.vercel.app/"
+  },
 
   // Mobile Projects
   {
@@ -139,6 +168,20 @@ const projects = [
     icon: Smartphone,
     github: "https://github.com/Dheerajvarma1/PaddyDoctorAPP",
     demo: "https://www.youtube.com/watch?v=oF2EVdqZTg4"
+  },
+  {
+    title: "Edge Detection App with OpenGL ES 2.0",
+    description: "A professional-grade real-time edge detection Android application featuring hardware-accelerated OpenGL ES 2.0 rendering with OpenCV C++ native processing.",
+    features: [
+      "Hardware-accelerated OpenGL ES 2.0 rendering",
+      "Real-time edge detection with Canny algorithm",
+      "Custom vertex & fragment shaders",
+      "Native C++ OpenCV processing with JNI"
+    ],
+    technologies: ["Android", "OpenGL ES 2.0", "OpenCV", "C++", "JNI", "Computer Vision"],
+    category: "mobile",
+    icon: Smartphone,
+    github: "https://github.com/Dheerajvarma1/android-opencv-opengl-assignment"
   }
 ]
 
